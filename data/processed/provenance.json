@@ -1,0 +1,32 @@
+{
+  "files": [
+    {
+      "file": "Connectivity_783.parquet",
+      "url": "https://raw.githubusercontent.com/philshiu/Drosophila_brain_model/91bdd1e7dcf193f3e7ca5a8933497fcef63b7960/Connectivity_783.parquet",
+      "sha256": "efeb23fb99098e9c390f6869969b2a121a2ee92c833cfc45ecb2c1d8e1af0347",
+      "bytes": 100804642
+    },
+    {
+      "file": "flywire_annotations_783.tsv",
+      "url": "https://raw.githubusercontent.com/flyconnectome/flywire_annotations/8587524c1748ce5ef2080822a2fc890fc03bf597/supplemental_files/Supplemental_file1_neuron_annotations.tsv",
+      "sha256": "9a4f8b2f843196074431ebd7cd883536afa1be86c8a4ce90970441e8be81d1be",
+      "bytes": 31718505
+    }
+  ],
+  "connectivity_revision": "91bdd1e7dcf193f3e7ca5a8933497fcef63b7960",
+  "annotation_revision": "8587524c1748ce5ef2080822a2fc890fc03bf597",
+  "source_edges": 15091983,
+  "coverage": {
+    "dopamine_targets": 1535,
+    "dopamine_reachable": 1475,
+    "direct_partners": 12517,
+    "target_incoming_edges": 24972,
+    "retained_target_incoming_edges": 24972,
+    "max_visual_path_hops": 5
+  },
+  "normalization": "Incoming synapse sum in full thresholded source graph",
+  "selection": "Up to 64 cells per T4/T5 subtype and LC4 per hemisphere; all dopamine targets and annotated direct inputs; strongest shortest visual paths within five hops; induced connections >=5 synapses",
+  "signaling": "ACh +1, GABA/glutamate -1 fast-current approximation; monoamines/unknown 0; receptor-specific effects unavailable",
+  "mapping": "Literature-supported population roles; scalar stimulus gains are model assumptions, no subtype retinotopy or biological calibration",
+  "geometry": "Real anchor coordinates; straight graph edges, no neuron skeletons"
+}

@@ -1,0 +1,25 @@
+version: 1
+demo:
+  input_population: [synthetic_depth_0]
+  source: FlyVision illustrative model
+  confidence: unvalidated
+  basis: assumption-based
+  biological_justification: Sensory input precedes downstream propagation; no synthetic node is identified with a real cell type.
+  features: {contrast: 0.12, motion_magnitude: 0.45, looming: 0.45, temporal_change: 0.30}
+real:
+  enabled: true
+  input_ids: data/processed/visual_subgraph.json (nodes with depth 0)
+  source: flyconnectome/flywire_annotations@8587524c1748ce5ef2080822a2fc890fc03bf597
+  confidence: Population role supported; numerical gains unvalidated
+  basis: dataset-derived identities with literature-based population roles and assumption-based scalar gains
+  biological_justification: Apply motion drive only to annotated T4/T5 input cells and expansion drive to annotated LC4 inputs. No subtype direction or receptive-field position is inferred.
+  motion:
+    populations: [T4a, T4b, T4c, T4d, T5a, T5b, T5c, T5d]
+    source: https://www.nature.com/articles/nature12320
+    confidence: high for broad motion sensitivity; low for this scalar response model
+    features: {motion_magnitude: 0.65, contrast: 0.10, temporal_change: 0.25}
+  looming:
+    populations: [LC4]
+    source: https://www.nature.com/articles/s41586-022-05562-8
+    confidence: high for population association; low for this scalar response model
+    features: {looming: 0.80, temporal_change: 0.10}

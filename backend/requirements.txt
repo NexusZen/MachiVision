@@ -1,0 +1,11 @@
+fastapi>=0.115,<1
+uvicorn>=0.34,<1
+python-multipart>=0.0.20
+opencv-python-headless>=4.11,<5
+numpy>=2.0,<3
+scipy>=1.14,<2
+pandas>=2.2,<3
+pyyaml>=6,<7
+pytest>=8,<9
+pyarrow>=19,<25
+imageio-ffmpeg>=0.6,<1

@@ -1,0 +1,39 @@
+{
+  "version": "visual-reference-v1-signed",
+  "graphId": "8545eb5f0fb3343ed9d530862202f0df7b6dd3d35e4faac5a45e09a01c3a1630",
+  "parameters": {
+    "decay": 0.65,
+    "gain": 0.65,
+    "input": 1,
+    "threshold": 5,
+    "hops": 6
+  },
+  "baseline": 0,
+  "reference": 0.0015393001623101004,
+  "references": [
+    {
+      "name": "Blank baseline",
+      "peak": 0
+    },
+    {
+      "name": "Sustained contrast",
+      "peak": 0.00010978340923764617
+    },
+    {
+      "name": "Motion pulse",
+      "peak": 0.0006286764902706474
+    },
+    {
+      "name": "Looming pulse",
+      "peak": 0.001276233966681924
+    },
+    {
+      "name": "Brightness transitions",
+      "peak": 0.00016857063280853484
+    },
+    {
+      "name": "Combined visual drive",
+      "peak": 0.0015393001623101004
+    }
+  ]
+}

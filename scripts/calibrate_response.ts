@@ -1,0 +1,14 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+import {performance} from 'node:perf_hooks';
+import {createCalibration} from '../lib/response-calibration';
+import {defaults,Graph} from '../lib/model';
+const file='data/processed/visual_subgraph.json';
+const graph:Graph=JSON.parse(readFileSync(file,'utf8'));
+delete graph.responseCalibration;delete graph.modelId;
+graph.modelId=createHash('sha256').update(JSON.stringify(graph)).digest('hex');
+const start=performance.now();
+graph.responseCalibration=createCalibration(graph,defaults);
+writeFileSync(file,JSON.stringify(graph));
+writeFileSync('data/processed/response-calibration.json',JSON.stringify(graph.responseCalibration,null,2));
+console.log(JSON.stringify({seconds:(performance.now()-start)/1000,...graph.responseCalibration},null,2));

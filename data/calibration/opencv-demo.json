@@ -1,0 +1,22 @@
+{
+  "engine": "opencv-farneback-v1",
+  "statistic": "clip mean",
+  "reference_set": "12 procedural moving-dot clips: 4 speeds \u00d7 3 radii; 6 seconds each",
+  "count": 12,
+  "sorted_scores": [
+    15.714799584995994,
+    26.30443621121962,
+    27.43711936908603,
+    31.190708812338734,
+    33.987690561747485,
+    36.054706420920084,
+    37.67812148779095,
+    41.32801590827672,
+    43.8859245616778,
+    48.033493577894085,
+    49.92652400380069,
+    61.141489830397724
+  ],
+  "fingerprint": "35686fe51556af5f20168e37d8909932c17fbe028a50545b86303281f397bf33",
+  "note": "Not a population norm; not compatible with browser block matching"
+}
