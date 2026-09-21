@@ -146,6 +146,43 @@ footer{border-color:#dbe4f0;color:#8290a9}.modal-backdrop{background:#08163399;b
 .modal-actions button.primary:hover{
   background:#086be8;
 }
+
+/* Keep the primary experiment action prominent and centered. */
+.intro.compact-intro{
+  justify-content:center;
+}
+.intro.compact-intro .intro-actions{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  align-items:center;
+  width:100%;
+}
+.intro-actions .export-results{
+  justify-self:start;
+}
+.intro-actions .upload-video{
+  grid-column:2;
+  min-width:210px;
+  padding:16px 30px;
+  font-size:16px;
+  font-weight:600;
+}
+@media(max-width:600px){
+  .intro.compact-intro .intro-actions{
+    grid-template-columns:1fr;
+    justify-items:center;
+    gap:10px;
+  }
+  .intro-actions .upload-video{
+    grid-column:1;
+    grid-row:1;
+    min-width:200px;
+  }
+  .intro-actions .export-results{
+    grid-row:2;
+    justify-self:center;
+  }
+}
 .loading-logo-container{
   position:relative;
   width:140px;
@@ -233,4 +270,3 @@ footer{border-color:#dbe4f0;color:#8290a9}.modal-backdrop{background:#08163399;b
     opacity:0;
   }
 }
-
