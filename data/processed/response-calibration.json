@@ -1,15 +1,15 @@
 {
-  "version": "visual-reference-v1-signed",
-  "graphId": "8545eb5f0fb3343ed9d530862202f0df7b6dd3d35e4faac5a45e09a01c3a1630",
+  "version": "visual-reference-v4-depolarization",
+  "graphId": "f0f1742d7013d76667dbb439c6f7d9512f6994ea5385a529a4401439b8ed230a",
   "parameters": {
-    "decay": 0.65,
-    "gain": 0.65,
+    "membraneMs": 20,
+    "synapseMv": 0.275,
     "input": 1,
     "threshold": 5,
     "hops": 6
   },
   "baseline": 0,
-  "reference": 0.0015393001623101004,
+  "reference": 0.20783784819680629,
   "references": [
     {
       "name": "Blank baseline",
@@ -17,23 +17,23 @@
     },
     {
       "name": "Sustained contrast",
-      "peak": 0.00010978340923764617
+      "peak": 0
     },
     {
       "name": "Motion pulse",
-      "peak": 0.0006286764902706474
+      "peak": 0.03293226036047337
     },
     {
       "name": "Looming pulse",
-      "peak": 0.001276233966681924
+      "peak": 0.027620458142718893
     },
     {
       "name": "Brightness transitions",
-      "peak": 0.00016857063280853484
+      "peak": 0.20783784819680629
     },
     {
       "name": "Combined visual drive",
-      "peak": 0.0015393001623101004
+      "peak": 0.05046276875991473
     }
   ]
 }

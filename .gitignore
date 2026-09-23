@@ -5,6 +5,7 @@ node_modules/
 
 # Next.js & Build Outputs
 .next/
+.next-dev/
 .next-production/
 out/
 build/
@@ -65,3 +66,5 @@ data/processed/*
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+# Reproducible binary full-connectome assets (run prepare_full_connectome.py)
+public/models/

@@ -17,3 +17,15 @@ export function dopamineHigh(frames:State[]):number|null{
  const available=frames.flatMap(f=>f.dopamine==null?[]:[f.dopamine]);
  return available.length?available.reduce((peak,value)=>Math.max(peak,value),0):null;
 }
+export function measureDopamine(state:State,indices:number[]){
+ state.dopamineRaw=indices.length&&state.depolarizationMv?indices.reduce((sum,i)=>sum+state.depolarizationMv![i],0)/indices.length:null;
+ state.dopamineRateHz=indices.length&&state.rateHz?indices.reduce((sum,i)=>sum+state.rateHz![i],0)/indices.length:null;
+ delete state.dopamine;
+}
+export function peakMembrane(frames:State[]):number|null{
+ const values=frames.flatMap(s=>s.dopamineRaw==null?[]:[s.dopamineRaw]);
+ return values.length?Math.max(...values):null;
+}
+export function formatResponse(value:number|null|undefined){
+ return value==null?'N/A':value===0?'0':value<.001?value.toExponential(2):value.toFixed(3);
+}

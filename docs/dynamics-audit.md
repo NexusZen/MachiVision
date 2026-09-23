@@ -1,3 +1,5 @@
+> Historical audit of the superseded rate model. Current behavior is documented in [METHODOLOGY.md](METHODOLOGY.md).
+
 # Dynamics audit — 2026-09-17
 
 Historical audit of the previous 10,266-neuron unsigned subset. The app now uses an expanded signed pathway model and reference normalization; see [current methodology](METHODOLOGY.md). The numerical results below describe the historical graph only.

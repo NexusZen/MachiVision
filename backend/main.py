@@ -22,7 +22,7 @@ def graph():
     return RealConnectomeAdapter(os.getenv('CONNECTOME_PATH',str(ROOT/'data/processed/visual_subgraph.json'))).load()
 
 @app.get('/api/health')
-def health():return {'status':'ok','source':graph()['source'],'synthetic':False,'neurons':len(graph()['neurons'])}
+def health():return {'status':'ok','source':graph()['source'],'synthetic':False,'neurons':len(graph()['neurons']),'model_scope':'legacy visual subset; browser full model is separate'}
 
 @app.get('/api/connectome')
 def connectome():return graph()
@@ -54,8 +54,8 @@ def process_video(path,parameters):
     for old in MEDIA.glob('*.mp4'):
         if old.stat().st_mtime<time.time()-86400:old.unlink(missing_ok=True)
     result['media_url']=f'/api/media/{media_id}'
-    result['overall_score']=round(result['dopamine_high'],1) if result['dopamine_high'] is not None else None
-    result['score_label']='Dopamine high — peak reference-normalized response index'
+    result['model_scope']='legacy visual subset; not the full photoreceptor-driven browser model'
+    result['measurement_label']='Peak neural activity score / 100'
     return result
 
 @app.post('/api/video/analyze')
@@ -64,7 +64,7 @@ async def analyze(file:UploadFile,parameters:str=Form('{}')):
     path=None
     try:
         settings=json.loads(parameters)
-        if not isinstance(settings,dict) or set(settings)-{'decay','gain','input_gain','threshold','hops'}:raise ValueError('Invalid simulation parameters')
+        if not isinstance(settings,dict) or set(settings)-{'membraneMs','synapseMv','input_gain','threshold','hops'}:raise ValueError('Invalid simulation parameters')
         with tempfile.NamedTemporaryFile(suffix=Path(file.filename).suffix,delete=False) as out:
             path=Path(out.name);size=0
             while chunk:=await file.read(1024*1024):

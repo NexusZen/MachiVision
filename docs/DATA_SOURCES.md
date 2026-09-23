@@ -30,7 +30,7 @@ Weights divide edge synapse counts by the target's incoming synapse sum in the *
 
 ## Input mapping: what is assumed
 
-Annotated T4/T5 inputs receive motion-driven scalar input; annotated LC4 inputs receive expansion-driven scalar input. The [T4/T5 directional study](https://www.nature.com/articles/nature12320) and [LC4 looming study](https://www.nature.com/articles/s41586-022-05562-8) support these broad population associations. Scalar gains, left/right field scaling, selected cells and score weights are modeling assumptions. No retinotopic receptive field or subtype preferred direction is inferred. Real connectivity does not make the simulated activity biologically validated.
+T4/T5 inputs now use published v783 column assignments, ON/OFF channels and subtype directions. The flat image projection and functional visual filters are assumptions. LC4 uses pooled expansion. See [the current methodology](METHODOLOGY.md) for provenance and model limits.
 
 ## Access notes and citations
 

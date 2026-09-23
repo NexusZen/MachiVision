@@ -25,8 +25,9 @@ def test_real_subset_has_provenance_and_no_synthetic_identifiers(real_graph):
 
 def test_looming_drives_only_annotated_looming_inputs(real_graph):
     f,_=extract(np.zeros((80,128,3),np.uint8),None,0)
+    f.pop('spatial')  # This test supplies a uniform feature-domain reference.
     f['looming']=1
-    result=Simulator(real_graph).step(f)
+    result=Simulator(real_graph).step(f,.1)
     for n,a in zip(real_graph['neurons'],result['activation']):
         if n['depth']==0:assert (a>0)==(n['cell_type']=='LC4')
 
@@ -49,12 +50,13 @@ def test_overall_score_includes_all_configured_components(real_graph):
 def test_dopamine_report_records_peak_and_excludes_negative_annotations():
     from backend.engine import report
     graph={'source':'test','synthetic':False,'neurons':[{'neurotransmitter':'dopamine'},{'neurotransmitter':'dopamine-negative'},{'neurotransmitter':'acetylcholine; dopamine'}],'connections':[]}
-    frames=[{'activation':a,'score':0,'features':{'timestamp':i},'trigger':'test'} for i,a in enumerate([[.2,1,.4],[.8,0,.6],[0,1,0]])]
+    frames=[{'activation':a,'rateHz':[v*100 for v in a],'depolarizationMv':[v*100 for v in a],'score':0,'features':{'timestamp':i},'trigger':'test'} for i,a in enumerate([[.2,1,.4],[.8,0,.6],[0,1,0]])]
     result=report(frames,graph,{})
     assert result['dopamine_neuron_count']==2
-    assert result['dopamine_high']==pytest.approx(70)
+    assert result['dopamine_peak_depolarization_mv']==pytest.approx(70)
     assert result['dopamine_peak_timestamp']==1
-    assert frames[-1]['dopamine']==0
+    assert frames[-1]['dopamineRaw']==0
+    assert all('dopamine' not in f for f in frames)
 
 def test_all_source_inputs_to_dopamine_targets_are_retained(real_graph):
     import pandas as pd

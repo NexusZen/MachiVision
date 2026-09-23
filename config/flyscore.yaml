@@ -1,9 +1,6 @@
-# Modeling choices, not scientific constants. Must sum to one.
-weights:
-  visual: 0.20
-  motion: 0.20
-  contrast: 0.10
-  network: 0.15
-  downstream: 0.15
-  looming: 0.10
-  novelty: 0.10
+name: neural_activity_percentage
+range: [0, 100]
+definition: 100 * spiking_neurons / simulated_neurons
+observation: at least one spike in the observation window
+novelty_weighting: false
+per_video_normalization: false
